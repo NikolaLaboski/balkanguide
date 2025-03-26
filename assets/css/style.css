@@ -515,38 +515,40 @@ body {
   transform: translateY(-2px);
 }
 
-/* Discount Offer */
+/* Discount Offer with Parallax */
 .discount-offer {
   padding: 80px 0;
-  background: linear-gradient(135deg, #ff4b4b 0%, #e63939 100%);
+  background: url('../images/home/pexels-ingo-joseph-188029.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
   color: #fff;
+  text-align: center;
+}
+
+/* Overlay for better text readability */
+.discount-offer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  /* Adjust opacity as needed */
+}
+
+/* Ensure content stays above overlay */
+.dicount-offer-content {
+  position: relative;
+  z-index: 2;
 }
 
 .dicount-offer-content h2 {
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 30px;
-}
-
-.campaign-timer {
-  margin-bottom: 30px;
-}
-
-#timer {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.time {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.time span {
-  display: block;
-  font-size: 14px;
-  font-weight: 400;
 }
 
 .discount-offer-btn {
@@ -565,6 +567,63 @@ body {
   background: #f0f0f0;
   color: #e63939;
   transform: translateY(-2px);
+}
+
+/* Countdown Timer Styling */
+.campaign-timer {
+  margin-bottom: 30px;
+}
+
+#timer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.time {
+  width: 140px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+
+.time:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Animated number change */
+.time span {
+  font-size: 30px;
+  font-weight: 800;
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Destinations */
@@ -759,7 +818,7 @@ body {
 }
 
 /* Testimonials */
-/* Testimonials */
+
 .testemonial {
   padding: 120px 0;
   background: #f5f6fa;

@@ -66,3 +66,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// Countdown Timer
+function startCountdown(targetDate) {
+  function updateTimer() {
+    const now = new Date().getTime();
+    const timeLeft = targetDate - now;
+
+    if (timeLeft <= 0) {
+      document.getElementById("timer").innerHTML = "<h3>Offer Expired</h3>";
+      return;
+    }
+
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerHTML = `<span>${days}</span>Days`;
+    document.getElementById("hours").innerHTML = `<span>${hours}</span>Hours`;
+    document.getElementById(
+      "minutes"
+    ).innerHTML = `<span>${minutes}</span>Minutes`;
+    document.getElementById(
+      "seconds"
+    ).innerHTML = `<span>${seconds}</span>Seconds`;
+  }
+
+  // Update the timer every second
+  setInterval(updateTimer, 1000);
+  updateTimer(); // Run immediately to prevent 1s delay
+}
+
+// Set target date (change this to your desired countdown end date)
+const countdownDate = new Date("April 30, 2028 23:59:59").getTime();
+startCountdown(countdownDate);
